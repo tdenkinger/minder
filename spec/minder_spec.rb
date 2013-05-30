@@ -5,19 +5,19 @@ describe Reminder do
 
   context ".new" do
     it "has no reminders initially" do
-      expect(m.reminders).to be_empty
+      expect(m.view).to be_empty
     end
   end
 
   context ".add" do
     it "accepts a new reminder" do
       add_test_reminders(m, 1)
-      expect(m.reminders).not_to be_empty
+      expect(m.view).not_to be_empty
     end
 
     it "can add more than one reminder" do
       add_test_reminders(m, 2)
-      expect(m.reminders.count).to eq(2)
+      expect(m.view.split("|").count).to eq(2)
     end
   end
 

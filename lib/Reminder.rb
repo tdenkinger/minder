@@ -10,6 +10,6 @@ class Reminder
   end
 
   def view
-    reminders.to_s
+    reminders.join("|")
   end
 end
