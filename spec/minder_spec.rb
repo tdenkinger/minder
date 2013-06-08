@@ -22,7 +22,7 @@ describe Reminder do
   end
 
   context ".view" do
-    it "lists all the reminders" do
+    it "returns all the reminders" do
       add_test_reminders(m, 3)
       expect(m.view).not_to be_empty
     end
@@ -30,6 +30,7 @@ describe Reminder do
 end
 
 def add_test_reminders(o, test_count)
+
   test_count.times{|i| o.add "test#{i}" }
 end
 
