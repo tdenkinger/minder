@@ -1,15 +1,17 @@
-class Reminder
-  attr_reader :reminders
+require_relative "./DB"
 
-  def initialize
-    @reminders = []
+class Reminder
+  attr_accessor :db
+
+  def initialize database
+    @db = database
   end
 
-  def add(reminder)
-    reminders << reminder
+  def add reminder
+    db.save_reminder reminder
   end
 
   def view
-    reminders.join("|")
+    db.reminders
   end
 end
