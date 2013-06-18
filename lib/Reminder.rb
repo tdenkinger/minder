@@ -1,7 +1,5 @@
-require_relative "./DB"
-
 class Reminder
-  attr_accessor :db
+  attr_reader :db
 
   def initialize database
     @db = database
