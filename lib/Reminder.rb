@@ -10,6 +10,7 @@ class Reminder
   end
 
   def view
-    db.reminders
+    reminders = db.reminders
+    reminders.empty? ? "No reminders waiting" : reminders
   end
 end

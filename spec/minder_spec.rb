@@ -6,7 +6,7 @@ describe Reminder do
 
   context ".new" do
     it "has no reminders initially" do
-      expect(m.view).to be_empty
+      expect(m.view).to eq "No reminders waiting"
     end
   end
 
@@ -23,9 +23,17 @@ describe Reminder do
   end
 
   context ".view" do
-    it "returns all the reminders" do
-      add_test_reminders(m, 3)
-      expect(m.view).not_to be_empty
+    context "when there are no reminders" do
+      it "returns a message that there are no reminders" do
+        expect(m.view).to eq "No reminders waiting"
+      end
+    end
+
+    context "when there are reminders" do
+      it "returns all the reminders" do
+        add_test_reminders(m, 3)
+        expect(m.view).not_to be_empty
+      end
     end
   end
 end
