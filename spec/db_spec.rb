@@ -1,7 +1,7 @@
 require_relative '../lib/DB'
 
-describe DB do
-  let(:db){ DB.new }
+describe Database do
+  let(:db){ Database.new }
 
   it "starts out empty" do
     expect(db.reminders).to be_empty
