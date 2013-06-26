@@ -9,8 +9,7 @@ get '/' do
   "Nothing to see here, pal."
 end
 
-post "/reminder/:reminder" do
-  p params[:reminder]
+get "/reminder/:reminder" do
   r.add params[:reminder]
 end
 
