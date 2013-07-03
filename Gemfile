@@ -1,11 +1,22 @@
 source 'https://rubygems.org'
 
-gem 'sinatra'
+gem 'rails', '4.0.0'
+gem 'sqlite3'
 
-group :development do
-  gem 'sinatra-contrib'
+gem 'sass-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
+
+gem 'jbuilder', '~> 1.2'
+
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
 end
 
-group :test, :development do
-  gem 'rspec', '~> 2.13'
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+group :production do
 end

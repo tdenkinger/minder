@@ -6,11 +6,11 @@ require './lib/DB'
 r = Reminder.new Database.new
 
 get '/' do
-  "Nothing to see here, pal."
+  redirect '/reminders'
 end
 
-get "/reminder/:reminder" do
-  r.add params[:reminder]
+post '/reminder' do
+  r.add request.body.read
 end
 
 get "/reminders" do
