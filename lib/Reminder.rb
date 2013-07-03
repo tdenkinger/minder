@@ -1,3 +1,5 @@
+require 'json'
+
 class Reminder
   attr_reader :db
 
@@ -12,6 +14,6 @@ class Reminder
 
   def view
     reminders = db.reminders
-    reminders.empty? ? "No reminders waiting" : reminders
+    reminders.empty? ? "No reminders waiting" : reminders.to_json
   end
 end
