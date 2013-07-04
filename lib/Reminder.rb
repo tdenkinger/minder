@@ -13,7 +13,6 @@ class Reminder
   end
 
   def view
-    reminders = db.reminders
-    reminders.to_json
+    db.reminders.to_json
   end
 end
