@@ -14,6 +14,6 @@ class Reminder
 
   def view
     reminders = db.reminders
-    reminders.empty? ? "No reminders waiting" : reminders.to_json
+    reminders.to_json
   end
 end

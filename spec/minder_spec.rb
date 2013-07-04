@@ -6,39 +6,35 @@ describe Reminder do
 
   context ".new" do
     it "has no reminders initially" do
-      expect(m.view).to eq "No reminders waiting"
+      expect(m.view).to eq "[]"
     end
   end
 
   context ".add" do
     it "accepts a new reminder" do
-      add_test_reminders(m, 1)
-      expect(m.view).not_to be_empty
+      expect(m.add "test").to eq :ok
     end
 
-    it "can add more than one reminder" do
-      add_test_reminders(m, 2)
-      expect(m.view.count).to eq 2
+    it "persists the reminder" do
+      m.add "{'message':'remember this'}"
+      expect(m.view).to eq "[\"{'message':'remember this'}\"]"
     end
   end
 
   context ".view" do
     context "when there are no reminders" do
-      it "returns a message that there are no reminders" do
-        expect(m.view).to eq "No reminders waiting"
+      it "returns an empty object" do
+        expect(m.view).to eq "[]"
       end
     end
 
     context "when there are reminders" do
       it "returns all the reminders" do
-        add_test_reminders(m, 3)
-        expect(m.view).not_to be_empty
+        m.add "{'message':'remember this'}"
+        m.add "{'message':'remember this too'}"
+        expect(m.view).to eq "[\"{'message':'remember this'}\",\"{'message':'remember this too'}\"]"
       end
     end
   end
-end
-
-def add_test_reminders(o, test_count)
-  test_count.times{|i| o.add "test#{i}" }
 end
 
