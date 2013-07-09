@@ -18,7 +18,13 @@ class Database
   def messages(tag: nil)
     messages = []
     items.each do |i|
-      messages << get_message(tag, i) unless message.empty?
+      item = parse_item(i)
+      if tag.nil?
+        messages << item["message"]
+      else
+        next unless item["tags"] && item["tags"].include?(tag)
+        messages << item["message"]
+      end
     end
     messages
   end
@@ -28,11 +34,11 @@ private
   def get_message(tag, i)
     item = parse_item(i)
     message = check_tags(tag, item)
-    messages << message unless message.empty?
+    message
   end
 
   def parse_item(item)
-    JSON.parse(i)
+    JSON.parse(item)
   end
 
   def check_tags(tag, item)
