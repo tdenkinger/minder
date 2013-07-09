@@ -19,30 +19,26 @@ class Database
     messages = []
     items.each do |i|
       item = parse_item(i)
-      if tag.nil?
-        messages << item["message"]
-      else
-        next unless item["tags"] && item["tags"].include?(tag)
-        messages << item["message"]
-      end
+      message = get_message(tag, item)
+      messages << message unless message.empty?
     end
-    messages
+    messages.to_json
   end
 
 private
-
-  def get_message(tag, i)
-    item = parse_item(i)
-    message = check_tags(tag, item)
-    message
-  end
 
   def parse_item(item)
     JSON.parse(item)
   end
 
-  def check_tags(tag, item)
+  def get_message(tag, item)
+    return item["message"] if tag.nil?
+    return get_message_by_tag(tag, item)
+  end
+
+  def get_message_by_tag(tag, item)
     return "" unless item["tags"]
-    return "" unless item["tags"].include?(tag)
+    return item["message"] if item["tags"].include?(tag)
+    ""
   end
 end
