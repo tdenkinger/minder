@@ -1,5 +1,5 @@
 **An API server for reminders**
 
-[![Code Climate](https://codeclimate.com/github/tdenkinger/mindasaurus.png)](https://codeclimate.com/github/tdenkinger/mindasaurus)
+[![Code Climate](https://codeclimate.com/github/tdenkinger/mindasaurus.png)](https://codeclimate.com/github/tdenkinger/mindasaurus) [![Build Status](https://travis-ci.org/tdenkinger/mindasaurus.png?branch=master)](https://travis-ci.org/tdenkinger/mindasaurus)
 
 I need a low-friction system to keep track of things. This is just the server. There will be clients to take access the APIs.
