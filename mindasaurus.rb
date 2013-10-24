@@ -1,5 +1,5 @@
 require "grape"
-require "datamapper"
+require "data_mapper"
 
 Dir["./lib/*.rb"].each { |file| require file }
 Dir["./models/*.rb"].each { |file| require file }
