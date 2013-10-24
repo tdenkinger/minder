@@ -5,5 +5,5 @@ task :test do
 end
 
 task :run do
-  exec 'rerun "app/app.rb"'
+  exec 'rerun "rackup"'
 end

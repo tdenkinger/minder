@@ -5,6 +5,7 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'datamapper'
 gem 'json'
+gem 'grape'
 
 group :production do
   gem 'pg'

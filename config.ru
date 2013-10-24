@@ -1,2 +1,2 @@
-require './app'
-run Sinatra::Application
+require './mindasaurus'
+run Mindasaurus::API
