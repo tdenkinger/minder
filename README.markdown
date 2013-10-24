@@ -6,6 +6,8 @@ I need a low-friction system to keep track of things. This is just the server. T
 
 [Grape](https://github.com/intridea/grape)
 
+[Best Practices for a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
+
 ### TODOS
 
 * Add a reminder to the system
