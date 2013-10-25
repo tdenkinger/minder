@@ -1,12 +1,10 @@
 ENV["RACK_ENV"] = "test"
-require "sinatra"
+require "grape"
 require "rspec"
 require "data_mapper"
 require "database_cleaner"
 
 Dir["./models/*.rb"].each { |file| require file }
-
-Sinatra::Application.environment = :test
 
 DataMapper::setup(:default, "sqlite::memory:")
 DataMapper::Model.raise_on_save_failure = false

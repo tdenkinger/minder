@@ -12,11 +12,15 @@ module Mindasaurus
     format :json
 
     get :reminders do
-      "Hello World"
+      p params
     end
 
-    post :reminder do
-      "New Reminder"
+    get "reminders/:id" do
+      p params
+    end
+
+    post :reminders do
+      Reminders.new_reminder
     end
   end
 end
