@@ -5,7 +5,7 @@ class Reminders
     DB::Reminders.add_reminder reminder
   end
 
-  def self.get_reminders
-    DB::Reminders.get_all
+  def self.retrieve id = nil
+    DB::Reminders.retrieve id
   end
 end

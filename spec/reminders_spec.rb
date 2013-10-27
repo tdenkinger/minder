@@ -8,9 +8,21 @@ describe Reminders do
     expect(reminder).to eql true
   end
 
-  it "returns all reminders" do
-    Reminders.add_reminder "Remember the milk"
-    reminders = Reminders.get_reminders
-    expect(reminders[0].reminder).to eql "Remember the milk"
+  context "returns reminders" do
+    before(:each) do
+      Reminders.add_reminder "Remember the milk"
+      Reminders.add_reminder "Walk the dog"
+    end
+
+    it "returns all reminders" do
+      reminders = Reminders.retrieve
+      expect(reminders[0].reminder).to eql "Remember the milk"
+      expect(reminders[1].reminder).to eql "Walk the dog"
+    end
+
+    it "returns a specific reminder" do
+      reminders = Reminders.retrieve 2
+      expect(reminders.reminder).to eql "Walk the dog"
+    end
   end
 end

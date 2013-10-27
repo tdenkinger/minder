@@ -12,15 +12,15 @@ module Mindasaurus
     format :json
 
     get :reminders do
-      p params
+      Reminders.retrieve
     end
 
     get "reminders/:id" do
-      p params
+      Reminders.retrieve params[:id]
     end
 
     post :reminders do
-      Reminders.new_reminder
+      Reminders.add_reminder params[:reminder]
     end
   end
 end
