@@ -21,6 +21,19 @@ module DB
     property :reset_password, String
     property :api_key, String, :required => true, :default => SecureRandom.hex
 
+    def self.login username, password
+      get_api_key username, password
+    end
+
+    def self.get_api_key username, password
+      @user = Users.first(:username => username)
+      is_password_valid?(password, @user.password, @user.salt) ? @user.api_key : ""
+    end
+
+    def self.is_password_valid? submitted_password, existing_password, salt
+      Digest::SHA1.hexdigest(submitted_password + salt) == existing_password
+    end
+
     def self.register params
       user = create_new_user params
       compile_status user

@@ -24,9 +24,19 @@ describe DB::Users do
     end
   end
 
-  context "user login" do
-    it "rejects an unkonwn user"
-    it "returns the api key for a known user"
+  context "retrieve a user api key" do
+    it "rejects an unkonwn user" do
+      DB::Users.register good_user
+      key = DB::Users.login good_user[:username], "foo"
+      expect(key).to be_empty
+    end
+
+    it "returns the api key for a known user" do
+      saved = DB::Users.register good_user
+      key = DB::Users.login good_user[:username], good_user[:password]
+      expect(key).not_to be_empty
+      expect(key).to eq saved[:message]
+    end
   end
 
 end
