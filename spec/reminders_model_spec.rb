@@ -1,4 +1,4 @@
-require "spec_helper"
+require "helpers/spec_helper"
 
 describe DB::Reminders do
   it "saves a new reminder" do

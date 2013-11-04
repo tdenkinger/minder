@@ -1,4 +1,4 @@
-require "spec_helper"
+require "helpers/spec_helper"
 require_relative "../models/users"
 
 describe DB::Users do
