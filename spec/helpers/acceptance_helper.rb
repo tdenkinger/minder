@@ -1,8 +1,8 @@
 require_relative "spec_helper"
-require_relative "../app/app"
 require "capybara"
 require "capybara/rspec"
 require "rack/test"
+require_relative "../../mindasaurus"
 
 Capybara.app = Mindasaurus
 

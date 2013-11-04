@@ -22,6 +22,14 @@ module Mindasaurus
     post :reminders do
       Reminders.add_reminder params[:reminder]
     end
+
+    post :register do
+      Users.register params
+    end
+
+    post :login do
+      Users.login params
+    end
   end
 end
 
