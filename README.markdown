@@ -11,10 +11,10 @@ I need a low-friction system to keep track of things. This is just the server. T
 ### TODOS
 
 * Login with Github
-* Add a reminder to the system
-* See all the reminders
+* ~~Add a reminder to the system~~
+* ~~See all the reminders~~
 * Tag reminders
 * See reminders filtered by tag
 * Delete a reminder
 * Update a reminder?
-* Segregate reminders by submitter
+* ~~Segregate reminders by submitter~~
