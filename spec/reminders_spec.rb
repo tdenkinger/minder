@@ -2,16 +2,17 @@ require "helpers/spec_helper"
 require_relative "../lib/reminders"
 
 describe Reminders do
+  let(:api_key){ "fake_api_key" }
 
   it "accepts a new reminder" do
-    reminder = Reminders.add_reminder "Remember the milk"
+    reminder = Reminders.add_reminder "Remember the milk", api_key
     expect(reminder).to eql true
   end
 
   context "returns reminders" do
     before(:each) do
-      Reminders.add_reminder "Remember the milk"
-      Reminders.add_reminder "Walk the dog"
+      Reminders.add_reminder "Remember the milk", api_key
+      Reminders.add_reminder "Walk the dog", api_key
     end
 
     it "returns all reminders" do

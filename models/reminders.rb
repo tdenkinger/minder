@@ -4,6 +4,7 @@ module DB
 
     property :id, Serial
     property :reminder, String
+    property :api_key, String
 
     def self.get_all
       self.all
@@ -17,8 +18,12 @@ module DB
       end
     end
 
-    def self.add_reminder reminder
-      reminder = self.new( :reminder => reminder )
+    def self.retrieve_by_key api_key
+      self.all(:api_key => api_key)
+    end
+
+    def self.add_reminder reminder, api_key
+      reminder = self.new(:reminder => reminder, :api_key => api_key)
       reminder.save
     end
   end

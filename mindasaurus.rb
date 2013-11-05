@@ -15,20 +15,26 @@ module Mindasaurus
       Reminders.retrieve
     end
 
-    get "reminders/:id" do
+    get "reminders/reminder/:id" do
       Reminders.retrieve params[:id]
     end
 
+    get "reminders/:api_key" do
+      Reminders.retrieve_by_key params[:api_key]
+    end
+
     post :reminders do
-      Reminders.add_reminder params[:reminder]
+      Reminders.add_reminder params[:reminder], params[:api_key]
     end
 
     post :register do
-      Users.register params
+      user = Users.register params
+      {:status => user[:status], :api_key => user[:message] }
     end
 
     post :login do
-      Users.login params
+      api_key = Users.login params
+      {:api_key => api_key}
     end
   end
 end
