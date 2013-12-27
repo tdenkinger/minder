@@ -36,6 +36,11 @@ module Mindasaurus
       api_key = Users.login params
       {:api_key => api_key}
     end
+
+    get "/version" do
+      File.read('version.txt'))
+    end
+
   end
 end
 
