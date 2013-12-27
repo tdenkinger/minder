@@ -38,7 +38,7 @@ module Mindasaurus
     end
 
     get "/version" do
-      File.read('version.txt'))
+      File.read('version.txt')
     end
 
   end
