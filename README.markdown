@@ -18,3 +18,4 @@ I need a low-friction system to keep track of things. This is just the server. T
 * Delete a reminder
 * Update a reminder?
 * ~~Segregate reminders by submitter~~
+* Support deployinator
