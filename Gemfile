@@ -3,6 +3,7 @@ ruby "2.0.0"
 
 gem 'datamapper'
 gem 'grape'
+gem "grape-rabl"
 
 group :production do
   gem 'pg'

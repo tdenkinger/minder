@@ -92,6 +92,11 @@ GEM
       rack-accept
       rack-mount
       virtus (>= 1.0.0)
+    grape-rabl (0.2.2)
+      grape
+      i18n
+      rabl
+      tilt
     hashie (2.0.5)
     i18n (0.6.5)
     ice_nine (0.10.0)
@@ -106,6 +111,8 @@ GEM
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     pg (0.17.0)
+    rabl (0.9.3)
+      activesupport (>= 2.3.14)
     rack (1.5.2)
     rack-accept (0.4.5)
       rack (>= 0.4)
@@ -129,6 +136,7 @@ GEM
     stringex (1.5.1)
     thread_safe (0.1.3)
       atomic
+    tilt (2.0.0)
     tzinfo (0.3.38)
     uuidtools (2.1.4)
     virtus (1.0.0)
@@ -149,6 +157,7 @@ DEPENDENCIES
   dm-postgres-adapter
   dm-sqlite-adapter
   grape
+  grape-rabl
   pg
   rake
   rb-fsevent

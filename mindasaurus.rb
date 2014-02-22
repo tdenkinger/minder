@@ -1,22 +1,14 @@
-require "grape"
-require "data_mapper"
-
-Dir["./lib/*.rb"].each { |file| require file }
-Dir["./models/*.rb"].each { |file| require file }
-
-DataMapper::setup(:default, (ENV["DATABASE_URL"] || "sqlite3://#{Dir.pwd}/db/mindasaurus.db"))
-DataMapper.finalize.auto_upgrade!
-
 module Mindasaurus
   class API < Grape::API
     format :json
+    formatter :json, Grape::Formatter::Rabl
 
-    get :reminders do
-      Reminders.retrieve
+    get :reminders, :rabl => 'reminders' do
+      @reminders = Reminders.retrieve
     end
 
-    get "reminders/reminder/:id" do
-      Reminders.retrieve params[:id]
+    get "reminders/reminder/:id", :rabl => "reminder" do
+      @reminder = Reminders.retrieve params[:id]
     end
 
     get "reminders/:api_key" do
