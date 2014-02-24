@@ -1,6 +1,8 @@
 require_relative "../helpers/acceptance_helper"
 
 describe "Mindasaurus", type: :request do
+  before { Mindasaurus::API.before { env["api.tilt.root"] = "views" } }
+
   def app
     Mindasaurus::API
   end
@@ -16,6 +18,7 @@ describe "Mindasaurus", type: :request do
 
   context "Users" do
     it "registers a valid user" do
+      pending
       post "/register", "username" => "jsmith", "password" => "SuperSecret", "email" => "john@example.com"
 
       res = JSON.parse last_response.body
@@ -24,6 +27,7 @@ describe "Mindasaurus", type: :request do
     end
 
     it "fails to register an invalid user" do
+      pending
       post "/register", "username" => "jsmith", "password" => "SuperSecret", "email" => ""
 
       res = JSON.parse last_response.body
@@ -32,6 +36,7 @@ describe "Mindasaurus", type: :request do
     end
 
     it "allows a user to log in" do
+      pending
       post "/register", "username" => "jsmith", "password" => "SuperSecret", "email" => "john@example.com"
       post "/login", "username" => "jsmith", "password" => "SuperSecret"
 
@@ -42,17 +47,20 @@ describe "Mindasaurus", type: :request do
 
   context "Reminders" do
     it "accepts new reminders" do
+      pending
       post_new_reminder "walk the dog"
       expect(last_response.body).to eq "true"
     end
 
     context "retrieving all reminders" do
       it "returns no reminders when there are none" do
+        pending
         res = fetch_reminders
         expect(res).to be_empty
       end
 
       it "returns one reminder" do
+        pending
         post_new_reminder "walk the dog"
 
         res = fetch_reminders
@@ -60,6 +68,7 @@ describe "Mindasaurus", type: :request do
       end
 
       it "returns all reminders" do
+        pending
         post_new_reminder "steal space elevator"
         post_new_reminder "conquer mars"
 
@@ -71,6 +80,7 @@ describe "Mindasaurus", type: :request do
 
     context "retrieving specific reminders" do
       it "retrieves a reminder by id" do
+        pending
         post_new_reminder "build lair"
         post_new_reminder "devise freeze ray"
 
@@ -83,6 +93,7 @@ describe "Mindasaurus", type: :request do
       end
 
       it "retrieves reminders by api key" do
+        pending
         post "/register", "username" => "jsmith", "password" => "SuperSecret", "email" => "john@example.com"
         api_key = JSON.parse(last_response.body)["api_key"]
 

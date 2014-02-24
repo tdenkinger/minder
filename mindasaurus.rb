@@ -3,7 +3,7 @@ module Mindasaurus
     format :json
     formatter :json, Grape::Formatter::Rabl
 
-    get :reminders, :rabl => 'reminders' do
+    get :reminders, :rabl => "reminders" do
       @reminders = Reminders.retrieve
     end
 
@@ -11,12 +11,12 @@ module Mindasaurus
       @reminder = Reminders.retrieve params[:id]
     end
 
-    get "reminders/:api_key" do
-      Reminders.retrieve_by_key params[:api_key]
+    get "reminders/:api_key", :rabl => "reminders" do
+      @reminder = Reminders.retrieve_by_key params[:api_key]
     end
 
-    post :reminders do
-      Reminders.add_reminder params[:reminder], params[:api_key]
+    post :reminders, :rabl => "reminder" do
+      @reminders = Reminders.add_reminder params[:reminder], params[:api_key]
     end
 
     post :register do

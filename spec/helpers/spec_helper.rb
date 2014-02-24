@@ -1,6 +1,8 @@
 ENV["RACK_ENV"] = "test"
 require "grape"
+require "grape/rabl"
 require "rspec"
+require "rack/test"
 require "data_mapper"
 require "database_cleaner"
 
@@ -9,6 +11,18 @@ Dir["./models/*.rb"].each { |file| require file }
 DataMapper::setup(:default, "sqlite::memory:")
 DataMapper::Model.raise_on_save_failure = false
 DataMapper.finalize.auto_upgrade!
+
+Rabl.configure do |config|
+  config.include_json_root = false
+end
+
+RSpec.configure do |config|
+    config.include Rack::Test::Methods
+end
+
+# use Rack::Config do |env|
+#   env['api.tilt.root'] = 'views'
+# end
 
 RSpec.configure do |config|
 
