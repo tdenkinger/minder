@@ -6,6 +6,7 @@ require "rack/test"
 require "data_mapper"
 require "database_cleaner"
 
+Dir["./lib/*.rb"].each { |file| require file }
 Dir["./models/*.rb"].each { |file| require file }
 
 DataMapper::setup(:default, "sqlite::memory:")

@@ -18,7 +18,6 @@ describe "Mindasaurus", type: :request do
 
   context "Users" do
     it "registers a valid user" do
-      pending
       post "/register", "username" => "jsmith", "password" => "SuperSecret", "email" => "john@example.com"
 
       res = JSON.parse last_response.body
@@ -27,7 +26,6 @@ describe "Mindasaurus", type: :request do
     end
 
     it "fails to register an invalid user" do
-      pending
       post "/register", "username" => "jsmith", "password" => "SuperSecret", "email" => ""
 
       res = JSON.parse last_response.body
@@ -36,7 +34,6 @@ describe "Mindasaurus", type: :request do
     end
 
     it "allows a user to log in" do
-      pending
       post "/register", "username" => "jsmith", "password" => "SuperSecret", "email" => "john@example.com"
       post "/login", "username" => "jsmith", "password" => "SuperSecret"
 
