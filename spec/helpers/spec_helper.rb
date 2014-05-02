@@ -21,12 +21,7 @@ RSpec.configure do |config|
     config.include Rack::Test::Methods
 end
 
-# use Rack::Config do |env|
-#   env['api.tilt.root'] = 'views'
-# end
-
 RSpec.configure do |config|
-
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
   end
