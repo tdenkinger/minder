@@ -22,3 +22,7 @@ group :test do
   gem 'database_cleaner', '~>1.1'
   gem 'capybara'
 end
+
+group :development, :test do
+  gem "pry"
+end

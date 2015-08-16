@@ -18,7 +18,7 @@ Rabl.configure do |config|
 end
 
 RSpec.configure do |config|
-    config.include Rack::Test::Methods
+  config.include Rack::Test::Methods
 end
 
 RSpec.configure do |config|
@@ -34,4 +34,5 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 end
+
 

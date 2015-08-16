@@ -44,63 +44,62 @@ describe "Mindasaurus", type: :request do
 
   context "Reminders" do
     it "accepts new reminders" do
-      pending
       post_new_reminder "walk the dog"
       expect(last_response.body).to eq "true"
     end
-
-    context "retrieving all reminders" do
-      it "returns no reminders when there are none" do
-        pending
-        res = fetch_reminders
-        expect(res).to be_empty
-      end
-
-      it "returns one reminder" do
-        pending
-        post_new_reminder "walk the dog"
-
-        res = fetch_reminders
-        expect(res.first["reminder"]).to eq "walk the dog"
-      end
-
-      it "returns all reminders" do
-        pending
-        post_new_reminder "steal space elevator"
-        post_new_reminder "conquer mars"
-
-        res = fetch_reminders
-        expect(res.first["reminder"]).to eq "steal space elevator"
-        expect(res.last["reminder"]).to eq "conquer mars"
-      end
-    end
-
-    context "retrieving specific reminders" do
-      it "retrieves a reminder by id" do
-        pending
-        post_new_reminder "build lair"
-        post_new_reminder "devise freeze ray"
-
-        res = fetch_reminders
-        id, reminder = res.last["id"], res.last["reminder"]
-
-        get "/reminders/reminder/#{id}"
-        res = JSON.parse last_response.body
-        expect(res["reminder"]).to eq reminder
-      end
-
-      it "retrieves reminders by api key" do
-        pending
-        post "/register", "username" => "jsmith", "password" => "SuperSecret", "email" => "john@example.com"
-        api_key = JSON.parse(last_response.body)["api_key"]
-
-        post_new_reminder "drink more ovaltine", api_key
-        post_new_reminder "invent jetpack", api_key
-
-        get "/reminders/#{api_key}"
-        res = JSON.parse last_response.body
-        expect(res.last["reminder"]).to eq "invent jetpack"
-      end
-    end
+  #
+  #   context "retrieving all reminders" do
+  #     it "returns no reminders when there are none" do
+  #       pending
+  #       res = fetch_reminders
+  #       expect(res).to be_empty
+  #     end
+  #
+  #     it "returns one reminder" do
+  #       pending
+  #       post_new_reminder "walk the dog"
+  #
+  #       res = fetch_reminders
+  #       expect(res.first["reminder"]).to eq "walk the dog"
+  #     end
+  #
+  #     it "returns all reminders" do
+  #       pending
+  #       post_new_reminder "steal space elevator"
+  #       post_new_reminder "conquer mars"
+  #
+  #       res = fetch_reminders
+  #       expect(res.first["reminder"]).to eq "steal space elevator"
+  #       expect(res.last["reminder"]).to eq "conquer mars"
+  #     end
+  #   end
+  #
+  #   context "retrieving specific reminders" do
+  #     it "retrieves a reminder by id" do
+  #       pending
+  #       post_new_reminder "build lair"
+  #       post_new_reminder "devise freeze ray"
+  #
+  #       res = fetch_reminders
+  #       id, reminder = res.last["id"], res.last["reminder"]
+  #
+  #       get "/reminders/reminder/#{id}"
+  #       res = JSON.parse last_response.body
+  #       expect(res["reminder"]).to eq reminder
+  #     end
+  #
+  #     it "retrieves reminders by api key" do
+  #       pending
+  #       post "/register", "username" => "jsmith", "password" => "SuperSecret", "email" => "john@example.com"
+  #       api_key = JSON.parse(last_response.body)["api_key"]
+  #
+  #       post_new_reminder "drink more ovaltine", api_key
+  #       post_new_reminder "invent jetpack", api_key
+  #
+  #       get "/reminders/#{api_key}"
+  #       res = JSON.parse last_response.body
+  #       expect(res.last["reminder"]).to eq "invent jetpack"
+  #     end
+  #   end
   end
 end

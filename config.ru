@@ -1,7 +1,8 @@
 require "grape/rabl"
 require "grape"
 require "data_mapper"
-require './mindasaurus'
+require "./mindasaurus"
+require "pry"
 
 Dir["./lib/*.rb"].each { |file| require file }
 Dir["./models/*.rb"].each { |file| require file }
@@ -14,7 +15,7 @@ Rabl.configure do |config|
 end
 
 use Rack::Config do |env|
-  env['api.tilt.root'] = 'views'
+  env["api.tilt.root"] = "views"
 end
 
 run Mindasaurus::API
