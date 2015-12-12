@@ -25,5 +25,12 @@ describe Reminders do
       reminders = Reminders.retrieve 2
       expect(reminders.reminder).to eql "Walk the dog"
     end
+
+    it "returns reminders for a key" do
+      Reminders.add_reminder "Some other reminder", "other_key"
+
+      reminders = Reminders.retrieve_by_key api_key
+      expect(reminders.count).to eq 2
+    end
   end
 end
