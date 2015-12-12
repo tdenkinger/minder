@@ -1,24 +1,23 @@
 require_relative "../helpers/acceptance_helper"
 
 describe "Mindasaurus", type: :request do
+  let(:env){ {"api.tilt.root" => "views"} }
+
   def app
     Mindasaurus::API
   end
 
   def fetch_reminder id
-    env = {"api.tilt.root" => "views"}
     get "/reminders/reminder/#{id}", {}, env
     JSON.parse last_response.body
   end
 
   def fetch_reminders
-    env = {"api.tilt.root" => "views"}
     get "/reminders", {}, env
     JSON.parse last_response.body
   end
 
   def post_new_reminder reminder, api_key = nil
-    env = {"api.tilt.root" => "views"}
     post "/reminders", {"reminder" => reminder, "api_key" => api_key}, env
   end
 
@@ -90,13 +89,13 @@ describe "Mindasaurus", type: :request do
       end
 
       it "retrieves reminders by api key" do
-        post "/register", {"username" => "jsmith", "password" => "SuperSecret", "email" => "john@example.com"}, {"api.tilt.root" => "views"}
+        post "/register", {"username" => "jsmith", "password" => "SuperSecret", "email" => "john@example.com"}, env
         api_key = JSON.parse(last_response.body)["api_key"]
 
         post_new_reminder "drink more ovaltine", api_key
         post_new_reminder "invent jetpack", api_key
 
-        get "/reminders/#{api_key}", {}, {"api.tilt.root" => "views"}
+        get "/reminders/#{api_key}", {}, env
         res = JSON.parse last_response.body
         expect(res.last["reminder"]).to eq "invent jetpack"
       end
