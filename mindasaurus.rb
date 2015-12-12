@@ -12,7 +12,7 @@ module Mindasaurus
     end
 
     get "reminders/:api_key", :rabl => "reminders" do
-      @reminder = Reminders.retrieve_by_key params[:api_key]
+      @reminders = Reminders.retrieve_by_key params[:api_key]
     end
 
     post :reminders, :rabl => "reminder" do
