@@ -5,6 +5,7 @@ require "rspec"
 require "rack/test"
 require "data_mapper"
 require "database_cleaner"
+require "pry"
 
 Dir["./lib/*.rb"].each { |file| require file }
 Dir["./models/*.rb"].each { |file| require file }
